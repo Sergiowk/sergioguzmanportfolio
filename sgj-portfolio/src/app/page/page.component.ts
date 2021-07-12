@@ -16,7 +16,7 @@ export class PageComponent implements OnInit {
   ngOnInit(): void {
     this.pageScrollService.scroll({
       document: this.document,
-      scrollTarget: '.theEnd',
+      scrollTarget: '.aboutme',
     });
   }
 
