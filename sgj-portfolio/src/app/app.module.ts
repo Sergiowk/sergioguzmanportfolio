@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageComponent } from './page/page.component';
+import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PageComponent } from './page/page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxPageScrollCoreModule
+    NgxPageScrollCoreModule,
+    NgxHideOnScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
