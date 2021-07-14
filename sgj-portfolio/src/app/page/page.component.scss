@@ -1,8 +1,30 @@
 #aboutme, #myprojects{
     background-color: #f0f7f6;
+    color: #000000;
+}
+
+p{
+    background-color: #f0f7f6;
 }
 
 #workexperience, #contact{
     background-color: #696969;
     color: #fcfcfc;
+}
+
+a{
+    color: #000000;
+}
+
+.info{
+    text-align: justify;
+    margin: 0 auto;
+    width: 50em;
+}
+
+#mypicture{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
 }
