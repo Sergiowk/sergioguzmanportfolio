@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageComponent } from './page/page.component';
 import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    PageComponent
+    PageComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
