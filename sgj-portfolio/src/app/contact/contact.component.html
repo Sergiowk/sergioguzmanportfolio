@@ -1,27 +1,42 @@
-<form>
-    <div class="form-group">
-        <div>
+<div class="container">
+    <form action="" [formGroup]="formContact">
+        
+
+        <div class="form-group">
             <label for="email" class="form-label">Email address*</label>
-            <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            <div class="alert alert-danger" role="alert">
-                Please add your email
-            </div>
-        </div>    
-        <div>
-            <label for="phone" class="form-label">Phone</label>
-            <input type="phone" class="form-control" id="phoneInput">
+            <input  formControlName="email" type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="example@example.com">
         </div>
         <br/>
-        <div>
-            <label for="proposal" class="form-label">Write your proposal*</label>
-            <textarea class="form-control" id="proposalInput" rows="3"></textarea>
-            <br/>
-            <div class="alert alert-danger" role="alert">
-                Please add your proposal
-            </div>
+        <div *ngIf="formContact.controls['email'].invalid && formContact.controls['email'].dirty" class="alert alert-warning" role="alert">
+            <div *ngIf="formContact.controls['email'].errors?.required">
+                Add at least an email to contact you
+            </div> 
+            <div *ngIf="formContact.controls['email'].errors?.email">
+                Please follow the email format
+            </div>   
         </div>
-    </div>
-    <br/>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+
+
+        <div class="form-group">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="phone" class="form-control" formControlName="phone" id="phoneInput">
+        </div>
+
+
+        <div class="form-group">
+            <label for="proposal" class="form-label">Write your proposal*</label>
+            <textarea class="form-control" formControlName="proposal" id="proposalInput" rows="3" placeholder="Your thoughts are welcome"></textarea>
+        </div>
+        <br/>
+        <div *ngIf="formContact.controls['proposal'].errors?.required && formContact.controls['proposal'].dirty" class="alert alert-danger" role="alert">
+            <div *ngIf="formContact.controls['proposal'].errors?.required">
+                Please add your proposal
+            </div>    
+        </div>
+
+
+        <br/>
+        <button class="btn btn-primary" [disabled]="!formContact.valid" (click)="sendData()">Submit</button>
+        
+    </form>
+</div>

@@ -7,19 +7,22 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PageComponent } from './page/page.component';
 import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
 import { ContactComponent } from './contact/contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     PageComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxPageScrollCoreModule,
-    NgxHideOnScrollModule
+    NgxHideOnScrollModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
