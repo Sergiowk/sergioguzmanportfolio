@@ -29,6 +29,8 @@ export class ContactComponent implements OnInit {
   }
 
   sendData(){
+    this.formContact
+    console.log(this.formContact);
     
   }
 
