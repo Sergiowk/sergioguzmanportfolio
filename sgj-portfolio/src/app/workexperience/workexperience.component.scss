@@ -1,0 +1,15 @@
+
+.logo{
+    display: flex;
+    flex-flow: row wrap;
+    align-items:center;
+}
+
+img {
+    order: 1;
+    width: 10%;
+    padding-right: 2%;
+}
+h5 {
+    order: 2;
+}
