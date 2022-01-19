@@ -1,5 +1,5 @@
 
-.titles{
+.logo{
     display: flex;
     flex-flow: row wrap;
     align-items:center;
@@ -12,15 +12,4 @@ img {
 }
 h5 {
     order: 2;
-}
-
-.items {
-    text-align: center;
-}
-
-.verticalLine{
-    border-left: 1mm solid rgb(33, 37, 41);
-    height: 20px;
-    position: absolute;
-    left: 50%;
 }
