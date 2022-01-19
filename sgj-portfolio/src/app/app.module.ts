@@ -8,6 +8,7 @@ import { PageComponent } from './page/page.component';
 import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WorkexperienceComponent } from './workexperience/workexperience.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     PageComponent,
     ContactComponent,
+    WorkexperienceComponent,
   ],
   imports: [
     BrowserModule,
