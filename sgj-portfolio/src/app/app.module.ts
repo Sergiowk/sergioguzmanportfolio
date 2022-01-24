@@ -9,6 +9,8 @@ import { NgxHideOnScrollModule } from 'ngx-hide-on-scroll';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkexperienceComponent } from './workexperience/workexperience.component';
+import { HttpClientModule } from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { WorkexperienceComponent } from './workexperience/workexperience.compone
     NgxPageScrollCoreModule,
     NgxHideOnScrollModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
