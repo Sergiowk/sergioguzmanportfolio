@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { PopUpMessagesService } from '../pop-up-messages.service';
 
 @Component({
   selector: 'app-contact',
@@ -8,13 +9,13 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-
   formContact!:FormGroup;
-  responseMessage!: string; 
+  private message!: string;
 
-  constructor(
+  constructor(  
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private popUpMessage: PopUpMessagesService
     ) { 
     
   }
@@ -44,23 +45,25 @@ export class ContactComponent implements OnInit {
         (response) => {
             //console.log(response);
           if(response ="success"){
-            this.responseMessage = "Email sent";
-            console.log(this.responseMessage);
+            this.message = "Email sent";
+            this.popUpMessage.correctMessage('Sent', this.message);
+            console.log(this.message);
           }else{
-            this.responseMessage = "Issue sending the email, please try again (Press F5 to refresh the page).";
-            console.log(this.responseMessage);
+            this.message = "Issue sending the email, please try again (Press F5 to refresh the page).";
+            this.popUpMessage.errorMessage('Issue sending', this.message);
+            console.log(this.message);
           }
         },
         (error)=> {
-          this.responseMessage = "Issue sending the email, please try again (Press F5 to refresh the page). Script not responding.";
-          console.log(this.responseMessage);
+          this.message = "Issue sending the email, please try again (Press F5 to refresh the page). Script not responding.";
+          this.popUpMessage.errorMessage('Issue sending', this.message);
+          console.log(this.message);
           //console.log(error);
         }
     );
-    console.log(this.responseMessage);
     //Clean and enable the form for a new proposal
     this.formContact.reset();
-    this.responseMessage="";
+
     
   }
 
