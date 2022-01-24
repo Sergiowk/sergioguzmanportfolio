@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { PopUpMessagesService } from '../pop-up-messages.service';
 
 @Component({
   selector: 'app-contact',
@@ -8,13 +9,13 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-
   formContact!:FormGroup;
+  private message!: string;
 
-
-  constructor(
+  constructor(  
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private popUpMessage: PopUpMessagesService
     ) { 
     
   }
@@ -42,13 +43,27 @@ export class ContactComponent implements OnInit {
 
     this.http.post("https://script.google.com/macros/s/AKfycbxqBbEiZYC_TahT1BrWi8qNgg2ND4HODfsWrQw5myMBWzyapCx7RfHvDg36OQ0DMX_g/exec", formData).subscribe(
         (response) => {
-          console.log("OK");
-
+            //console.log(response);
+          if(response ="success"){
+            this.message = "Email sent";
+            this.popUpMessage.correctMessage('Sent', this.message);
+            console.log(this.message);
+          }else{
+            this.message = "Issue sending the email, please try again (Press F5 to refresh the page).";
+            this.popUpMessage.errorMessage('Issue sending', this.message);
+            console.log(this.message);
+          }
         },
         (error)=> {
-          console.log("NOT OK");
+          this.message = "Issue sending the email, please try again (Press F5 to refresh the page). Script not responding.";
+          this.popUpMessage.errorMessage('Issue sending', this.message);
+          console.log(this.message);
+          //console.log(error);
         }
     );
+    //Clean and enable the form for a new proposal
+    this.formContact.reset();
+
     
   }
 

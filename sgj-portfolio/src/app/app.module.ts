@@ -10,6 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkexperienceComponent } from './workexperience/workexperience.component';
 import { HttpClientModule } from "@angular/common/http";
+import { PopUpMessagesService } from './pop-up-messages.service';
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { HttpClientModule } from "@angular/common/http";
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    PopUpMessagesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
