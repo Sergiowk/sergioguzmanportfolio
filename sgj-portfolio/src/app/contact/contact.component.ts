@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 export class ContactComponent implements OnInit {
 
   formContact!:FormGroup;
-
+  responseMessage!: string; 
 
   constructor(
     private fb: FormBuilder,
@@ -42,13 +42,25 @@ export class ContactComponent implements OnInit {
 
     this.http.post("https://script.google.com/macros/s/AKfycbxqBbEiZYC_TahT1BrWi8qNgg2ND4HODfsWrQw5myMBWzyapCx7RfHvDg36OQ0DMX_g/exec", formData).subscribe(
         (response) => {
-          console.log("OK");
-
+            //console.log(response);
+          if(response ="success"){
+            this.responseMessage = "Email sent";
+            console.log(this.responseMessage);
+          }else{
+            this.responseMessage = "Issue sending the email, please try again (Press F5 to refresh the page).";
+            console.log(this.responseMessage);
+          }
         },
         (error)=> {
-          console.log("NOT OK");
+          this.responseMessage = "Issue sending the email, please try again (Press F5 to refresh the page). Script not responding.";
+          console.log(this.responseMessage);
+          //console.log(error);
         }
     );
+    console.log(this.responseMessage);
+    //Clean and enable the form for a new proposal
+    this.formContact.reset();
+    this.responseMessage="";
     
   }
 
